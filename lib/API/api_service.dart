@@ -6,18 +6,6 @@ import '../model/user.dart';
 class ApiService {
   static const String _baseUrl = 'https://gits-msib.my.id/wp-json';
 
-  static Future<List<Post>> listArticle(
-    http.Client client,
-    int page,
-  ) async {
-    final response =
-        await client.get(Uri.parse(_baseUrl + "/wp/v2/posts?page=$page"));
-    if (response.statusCode == 200) {
-      return postFromJson(response.body);
-    } else {
-      return [];
-    }
-  }
 
   static Future<User?> login(
     http.Client client,

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import '../ui/display_post_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../api/api_service.dart';
 import '../provider/user_provider.dart';
 
 class LoginPage extends StatefulWidget {
-  static const routeName = '/login';
   const LoginPage({Key? key}) : super(key: key);
-
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -16,7 +15,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
+  String? token = "";
   bool _isLoading = false;
 
   @override
@@ -72,7 +71,11 @@ class _LoginPageState extends State<LoginPage> {
 
                   if (user != null) {
                     userProvider.user = user;
-                    Navigator.of(context).pop();
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+                      return DisplayPost(
+                        user: user,
+                      );
+                    }));
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text('Login Sukses : ${user.displayName}'),
