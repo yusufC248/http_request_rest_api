@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../models/post_model.dart';
-import '../models/user.dart';
+import '../model/post_model.dart';
+import '../model/user.dart';
 
 class ApiService {
   static const String _baseUrl = 'https://gits-msib.my.id/wp-json';
