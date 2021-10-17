@@ -26,3 +26,21 @@ class ApiService {
     }
   }
 }
+
+class ApiSearch{
+  static Future<List<Search>> getData(String? query) async{
+    Uri uri = Uri.parse("https://gits-msib.my.id/wp-json/wp/v2/search?search=$query");
+    try{
+      final response = await http.get(uri);
+      if(200 == response.statusCode){
+        final List<Search> search = searchFromJson(response.body);
+        return search;
+      }else{
+        return List.empty();
+      }
+    }catch(e){
+      return List.empty();
+    }
+  }
+}
+
