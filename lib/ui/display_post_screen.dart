@@ -20,7 +20,6 @@ class _DisplayPostState extends State<DisplayPost> {
   int page = 1;
   final ScrollController _controller = ScrollController();
 
-
   @override
   void initState(){
     super.initState();
@@ -94,7 +93,17 @@ class _DisplayPostState extends State<DisplayPost> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(_loading ? 'Loading..': 'GITS ID Blog'),
-              widget.user!=null ? _logoutButton() : _loginButton(),
+              Row(
+                children: <Widget>[
+                  IconButton(
+                      onPressed: (){
+                        Navigator.pushNamed(context, AppRoute.searchRoute);
+                      },
+                      icon: const Icon(Icons.search),
+                  ),
+                  widget.user!=null ? _logoutButton() : _loginButton(),
+                ],
+              ),
             ],
           ),
         ),
