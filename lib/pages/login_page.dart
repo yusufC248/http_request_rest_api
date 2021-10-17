@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           const SizedBox(
-            height: 25,
+            height: 30,
           ),
           Consumer<UserProvider>(builder: (context, userProvider, _) {
             if (_isLoading) {
